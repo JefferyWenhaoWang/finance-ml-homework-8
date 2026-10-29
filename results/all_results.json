@@ -1,0 +1,106 @@
+{
+  "config": {
+    "grid": [
+      8,
+      8
+    ],
+    "sigma": 1.5,
+    "learning_rate": 0.5,
+    "decay_function": "linear_decay_to_zero",
+    "sigma_decay_function": "linear_decay_to_one",
+    "activation_distance": "euclidean",
+    "topology": "rectangular",
+    "iterations": 5000,
+    "primary_seed": 123
+  },
+  "primary": [
+    {
+      "neighborhood": "gaussian",
+      "seed": 123,
+      "quantization_error": 0.09429059192074121,
+      "topographic_error": 0.013333333333333334,
+      "occupied_cells": 51,
+      "mixed_cells": 2,
+      "cell_majority_purity": 0.9866666666666667,
+      "max_abs_weight": 0.8946872298588847
+    },
+    {
+      "neighborhood": "bubble",
+      "seed": 123,
+      "quantization_error": 0.09169032950492864,
+      "topographic_error": 0.03333333333333333,
+      "occupied_cells": 52,
+      "mixed_cells": 4,
+      "cell_majority_purity": 0.9733333333333334,
+      "max_abs_weight": 0.9321512412870796
+    },
+    {
+      "neighborhood": "mexican_hat",
+      "seed": 123,
+      "quantization_error": 0.2517136074184118,
+      "topographic_error": 0.0,
+      "occupied_cells": 2,
+      "mixed_cells": 2,
+      "cell_majority_purity": 0.6666666666666666,
+      "max_abs_weight": 4.378782376218544e+192
+    },
+    {
+      "neighborhood": "triangle",
+      "seed": 123,
+      "quantization_error": 0.054755860899840914,
+      "topographic_error": 0.12,
+      "occupied_cells": 57,
+      "mixed_cells": 4,
+      "cell_majority_purity": 0.9733333333333334,
+      "max_abs_weight": 0.9665478646193951
+    }
+  ],
+  "repeats_summary": [
+    {
+      "neighborhood": "gaussian",
+      "mean_qe": 0.09335992028703974,
+      "sd_qe": 0.0008166072627849742,
+      "min_qe": 0.09240243363194861,
+      "max_qe": 0.09429059192074121
+    },
+    {
+      "neighborhood": "bubble",
+      "mean_qe": 0.09203989957902478,
+      "sd_qe": 0.0005996575752271279,
+      "min_qe": 0.09149534624372935,
+      "max_qe": 0.09304623874878158
+    },
+    {
+      "neighborhood": "mexican_hat",
+      "mean_qe": 0.25289710597397264,
+      "sd_qe": 0.0026846006668148244,
+      "min_qe": 0.2490080265614417,
+      "max_qe": 0.2555283311323835
+    },
+    {
+      "neighborhood": "triangle",
+      "mean_qe": 0.05512124788388504,
+      "sd_qe": 0.0003360943659386426,
+      "min_qe": 0.054755860899840914,
+      "max_qe": 0.055666890542247514
+    }
+  ],
+  "versions": {
+    "MiniSom": "2.3.6",
+    "numpy": "2.1.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.9.2"
+  },
+  "python": "3.12.1",
+  "notes": [
+    "Labels are used only for visualization and post-training diagnostics, never for training.",
+    "MinMaxScaler is fit on all Iris points, matching the unsupervised descriptive tutorial; this is not held-out prediction accuracy.",
+    "MiniSom warns for noninteger sigma in bubble/triangle. Sigma=1.5 is deliberately kept fixed to isolate neighborhood choice.",
+    "Class indices are 0,1,2, mapped directly to their correct names and colors; the tutorial's c-1 indexing is corrected.",
+    "PCA initialization is identical for all functions; random seed affects the random training sample order.",
+    "Topographic error uses MiniSom's rectangular-map convention (diagonal adjacency included).",
+    "Mexican-hat prototypes diverge under the fixed tutorial hyperparameters; their magnitude is recorded. No retuning or clipping is applied.",
+    "The normalized U matrix is computed after common rescaling of all weights to prevent overflow, leaving its mathematical definition unchanged.",
+    "All BMUs are cross-checked using overflow-safe hypot distances."
+  ]
+}
